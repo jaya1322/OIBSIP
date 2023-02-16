@@ -1,0 +1,65 @@
+import java.util.*;
+class Guesses
+{
+	public void prepared()
+	{
+		Random rime=new Random();
+		Scanner mobj=new Scanner(System.in);
+		int v=rime.nextInt(101);
+		System.out.println("A Random Number is generated");
+		System.out.println("Enter the number of guesses you want to try.Guesses must be < 12");
+		int c=mobj.nextInt();
+		while(c>12)
+		{
+			System.out.println("Your chances exceeds. **Please Enter number < 12 **");
+			c=mobj.nextInt();
+		}
+		System.out.println("You have"+c+"Chances");
+		int mscore=100,dm=0;
+		for(dm=0;dm<c;dm++)
+		{
+			
+			System.out.println("Enter the number you guessed.Chance no"+(dm+1));
+			int numb=mobj.nextInt();
+			if(numb==v)
+			{
+				System.out.println("That's Amazing ...You won the Game");
+				System.out.println("Your score is "+mscore);
+				break;
+			}
+			else if(numb>v)
+			{
+				System.out.println("Your number is greater than the original number");
+			}
+			else
+			{
+				System.out.println("Your number is less than the original number");
+			}
+			mscore-=10;
+		} 
+		if(dm>=c)
+		{
+		    System.out.println("Alas!,You Lost the game");
+			System.out.println("The number is "+v);
+			System.out.println("Your score is: 0");
+		}
+	}
+}
+class Gaming
+{
+public static void main(String args[])
+{
+	System.out.println("Java developer Task-2");
+	Scanner mobj=new Scanner(System.in);
+	Guesses f=new Guesses();
+	System.out.println("Shall we start the game ? : Yes/No");
+	String str=mobj.nextLine();
+	while(str.equalsIgnoreCase("Yes")||str.equalsIgnoreCase("y"))
+	{
+		f.prepared();
+		System.out.println("Do you want to proceed ? Yes/No");
+		str=mobj.nextLine();
+	}
+	System.out.println("Game closed!!!");
+}
+}
